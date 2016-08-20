@@ -15,7 +15,7 @@
 #include <string.h>
 #include <wiringPi.h>
 #include <wiringSerial.h>
- #include <unistd.h>
+#include <unistd.h>
 
 #define x_ms 500L
 void sleep_for_x_ms();
@@ -59,9 +59,9 @@ int main(int argc, char *argv[])
 		sleep_for_x_ms();		
 		status = look_for_RFID();
 
-                if(status == 1){
-                        get_RFID(RFID_UID);
-                        printf("New tag: %s\n", RFID_UID);
+        if(status == 1){
+            get_RFID(RFID_UID);
+            printf("New tag: %s\n", RFID_UID);             
 			if(strcmp(RFID_UID, "") == 0) {
 				display("RFID read error","Try again.");
 			}
@@ -77,9 +77,11 @@ int main(int argc, char *argv[])
 								sendHelp(RFID_UID);
 								ReqJMN(JMN_resp, RFID_UID, "4", "help_email", stid);
 								admin_help = 1;
-							} else {
+							} 
+							else {
 								contact_admin();
 								ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
+								// ReqJMN(JMN_resp, RFID_UID, "4", "contact_admin", stid);
 							}
 						}
 						if(readPhoto(initPhotoState) == 1){
@@ -101,7 +103,6 @@ int main(int argc, char *argv[])
 					ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
 					admin_help = 0;
 				}
-
 				else if (strchr(JMN_resp,'E') != NULL) {
 					rejectUse();
 				} 
@@ -109,18 +110,18 @@ int main(int argc, char *argv[])
 
 				RFID_refresh();
 			}
-                }
-                
-                if(readHelp(initHelpState) == 1) {
-                        contact_admin();
-                        ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
-                }
+        }
+            
+        if(readHelp(initHelpState) == 1) {
+                contact_admin();
+                ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
+        }
 	}
-        RFID_end();
-        GPIO_end();
-        free(RFID_UID);
-        free(JMN_resp);
-        return 0;
+    RFID_end();
+    GPIO_end();
+    free(RFID_UID);
+    free(JMN_resp);
+    return 0;
 }
 void get_sid()
 {
