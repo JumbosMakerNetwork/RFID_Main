@@ -16,7 +16,7 @@ void takePicture(char *time_file, char *rfid)
 	time_t now = time(NULL);
 	//int now_int = (int)now;
 	
-	strftime(time_file, 24, "%Y-%m-%d_%H:%M:%S", localtime(&now));
+	strftime(time_file, 24, "%Y-%m-%d_%H-%M-%S", localtime(&now));
 	strcpy(jpg, ".jpg");
 	strncat(time_file, jpg, 5);
 
