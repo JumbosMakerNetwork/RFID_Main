@@ -1,6 +1,6 @@
 # Shell script to be run daily
 # Checks git for updates to the functional RFID programs
-# Make sure that the root crontable includes the line: 0 0 * * * /home/RFID/GitUpdate.sh
+# Make sure that the root crontable includes the line: 0 0 * * * /home/RFID/TSync/GitUpdate.sh
 # This will update every night at midnight
 
 # Compare local repository against the origin
