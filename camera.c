@@ -8,7 +8,6 @@
 #include <time.h>
 #include <unistd.h>
 
-// void takePicture(char *time_file, char *rfid, int #sid)
 void takePicture(char *time_file, char *rfid)
 {
 	char jpg[5];
@@ -16,7 +15,7 @@ void takePicture(char *time_file, char *rfid)
 	time_t now = time(NULL);
 	//int now_int = (int)now;
 	
-	strftime(time_file, 24, "%Y-%m-%d_%H-%M-%S", localtime(&now));
+	strftime(time_file, 24, "%Y-%m-%d_%H:%M:%S", localtime(&now));
 	strcpy(jpg, ".jpg");
 	strncat(time_file, jpg, 5);
 
@@ -32,11 +31,6 @@ void takePicture(char *time_file, char *rfid)
 	strcpy(command, "curl -F docfile=@/home/media/");
 	strncat(command, time_file, 24);
 	strcat(command, " 130.64.17.0:8000/RFID/5/5/");
-	/*
-	strcat(command, " 130.64.17.0:8000/RFID/5/"); // 5 for a take picture req type
-	strcat(command, sid);
-	strcat(command, "/");
-	*/
 	strcat(command, rfid);
 	strcat(command, "/");
 	strncat(command, time_file, 24);
