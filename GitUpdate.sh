@@ -5,11 +5,11 @@
 
 # Compare local repository against the origin
 echo 'Updating repository...'
-git -C /home/RFID/TSync remote update
+git -C /home/rfid/TSync remote update
 
 # Check status against the origin
 echo 'Checking Status...'
-if git -C /home/RFID/TSync status | grep -q 'Your branch is up-to-date'
+if git -C /home/rfid/TSync status | grep -q 'Your branch is up-to-date'
 	then
 		# If up to date, kill the script 
 		echo 'up-to-date'
