@@ -4,6 +4,7 @@
 # This will update every night at midnight
 
 # Compare local repository against the origin
+date
 echo 'Updating repository...'
 git -C /home/rfid/TSync remote update
 
