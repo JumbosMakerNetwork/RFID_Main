@@ -1,6 +1,6 @@
 /*
  * main.c
- *	
+ *
  *  by Will Dolan, June 2016
  */
 
@@ -20,10 +20,11 @@
 #define x_ms 500L
 void sleep_for_x_ms();
 void readIP();
-void get_sid();
+//void get_sid();
 
 char RFID_UID[10];
 char stid[10];
+char IP[64];
 /* Main :
  *      First, initialize RFID and GPIO components
  *      If the -IP flag is raised, display the IP address, read from stdin
@@ -32,21 +33,58 @@ char stid[10];
  *      based on response. Look for help/photo button depress throughout loop.
 */
 int main(int argc, char *argv[])
-{       
-	get_sid();
-    char *RFID_UID = (char *)calloc(10,1);
-    char *JMN_resp = (char *)calloc(512,1);
+{
+//	get_sid();
+	char *RFID_UID = (char *)calloc(10,1);
+	char *JMN_resp = (char *)calloc(512,1);
 
 	init_RFID();
 	init_GPIO();
 	delay(9000);
 	activate_LCD();
-
-	if(argc > 1) {
-		if(strcmp(argv[1], "-IP") == 0) {
-		        readIP();
+	printf("\nWe should start seeing arguments here...");
+	int i=0;
+	if (argc > 1) {
+		printf("\ncmdline args count=%d", argc);
+		for (i=1; i< argc; i++) {
+			printf("\narg%d= ", i);
+			printf("%s", argv[i]);
+			if(strcmp(argv[i], "-STID") == 0) {
+				i++;
+				printf("\narg%d= ", i);
+				printf("%s", argv[i]);
+				strcpy(stid, argv[i]);
+				printf("\nSuccessfully assigned station %s", stid);
+			}
+			else if(strcmp(argv[i], "-IP") == 0) {
+				i++;
+				// Check if there is an IP attached
+				if (argv[i]){
+					// Grab the first IP
+					printf("\narg%d= ", i);	
+					printf("%s", argv[i]);
+					strcpy(IP, argv[i]);
+					i++;
+					// Check for second
+					if (argv[i]){
+						// Grab the Second IP
+						printf("\narg%d= ", i);	
+						printf("%s", argv[i]);
+						strcat(IP, " ");
+						strcat(IP, argv[i]);
+					}
+					// Send that info to displayIP()
+					displayIP(IP);
+				}
+			}
 		}
-    }
+	}
+
+//	if(argc > 1) {
+//		if(strcmp(argv[1], "-IP") == 0) {
+//		        readIP();
+//		}
+//    }
 
 	int status = 0;
 	int use_time = 0;
@@ -123,17 +161,17 @@ int main(int argc, char *argv[])
     free(JMN_resp);
     return 0;
 }
-void get_sid()
-{
-	FILE *fp = fopen("sid.txt", "r");
-	if(fp == NULL) {
-		printf("Error opening station identifier\n");
-	}
-	else if(fgets(stid, 10, fp) != NULL) {
-		printf("Successfully assigned station %s \n", stid);
-		fclose(fp);
-	}
-}
+//void get_sid()
+//{
+//	FILE *fp = fopen("sid.txt", "r");
+//	if(fp == NULL) {
+//		printf("Error opening station identifier\n");
+//	}
+//	else if(fgets(stid, 10, fp) != NULL) {
+//		printf("Successfully assigned station %s \n", stid);
+//		fclose(fp);
+//	}
+//}
 
 void sleep_for_x_ms()
 {
@@ -143,11 +181,11 @@ void sleep_for_x_ms()
 	nanosleep(&tim , &tim2);
 }
 
-void readIP()
-{
-        char input[64];
-        fgets(input,64,stdin);
-        displayIP(input);
-}
+//void readIP()
+//{
+//        char input[64];
+//        fgets(input,64,stdin);
+//        displayIP(input);
+//}
 //char *//ReqJMN(char *RFID, char *//req, char *info, char* station);
 
