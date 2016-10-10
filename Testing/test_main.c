@@ -17,8 +17,8 @@
 #include <wiringSerial.h>
 #include <unistd.h>
 
-#define x_ms 500L
-void sleep_for_x_ms();
+// #define x_ms 500L
+void sleep_for_x_ms(int x_ms);
 void readIP();
 //void get_sid();
 
@@ -33,7 +33,7 @@ char IP[64];
  *      send a //request to JMN DB w/ RFID, then take appropriate action
  *      based on response. Look for help/photo button depress throughout loop.
 */
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
 //	get_sid();
 	char *RFID_UID = (char *)calloc(10,1);
@@ -97,47 +97,54 @@ int main(int argc, char *argv[])
 	int initPhotoState = readPhoto(0);
 	
 	while(1) {
-		sleep_for_x_ms();		
+		sleep_for_x_ms(500);		
 		status = look_for_RFID();
+		// printf("Current Status: %d\n", status);
 
-        if(status == 1){
+        if(status == 1) {
             get_RFID(RFID_UID);
             printf("New tag: %s\n", RFID_UID);             
 			if(strcmp(RFID_UID, "") == 0) {
 				display("RFID read error","Try again.");
+				delay(1000);
+		        display("Waiting for", "RFID...");
 			}
 			else {
-				ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
+				// Just set to true for any RFID. Just checking to see RFID reads
+				JMN_resp = 'T Brian'
+				// ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 
 				if (strchr(JMN_resp,'T') != NULL) {
 					time_t begin_t = beginUse(JMN_resp);
 					while(status == 1){
-						sleep_for_x_ms();		
-						if(readHelp(initHelpState) == 1){
-							if(admin_help == 0) {
-								sendHelp(RFID_UID);
-								ReqJMN(JMN_resp, RFID_UID, "4", "help_email", stid);
-								admin_help = 1;
-							} 
-							else {
-								contact_admin();
-								ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
-								// ReqJMN(JMN_resp, RFID_UID, "4", "contact_admin", stid);
-							}
-						}
-						if(readPhoto(initPhotoState) == 1){
-							display("Photo Snapped!","Uploading...");
-							char *time_file = (char *)calloc(25,1);
-							takePicture(time_file, RFID_UID);
-							//ReqJMN(JMN_resp, RFID_UID, "5", time_file, stid);
-							free(time_file);
-							display("Image uploaded!","See email.");
-							delay(2000);
-							display("Commence","Use...");
-						}
+						sleep_for_x_ms(500);	
+						// if(readHelp(initHelpState) == 1){
+						// 	if(admin_help == 0) {
+						// 		sendHelp(RFID_UID);
+						// 		ReqJMN(JMN_resp, RFID_UID, "4", "help_email", stid);
+						// 		admin_help = 1;
+						// 	} 
+						// 	else {
+						// 		contact_admin();
+						// 		ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
+						// 		// ReqJMN(JMN_resp, RFID_UID, "4", "contact_admin", stid);
+						// 	}
+						// }
+						// if(readPhoto(initPhotoState) == 1){
+						// 	display("Photo Snapped!","Uploading...");
+						// 	char *time_file = (char *)calloc(25,1);
+						// 	takePicture(time_file, RFID_UID);
+						// 	//ReqJMN(JMN_resp, RFID_UID, "5", time_file, stid);
+						// 	free(time_file);
+						// 	display("Image uploaded!","See email.");
+						// 	delay(2000);
+						// 	display("Commence","Use...");
+						// }
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
 						status = look_for_RFID();
+						printf("Status Check 1: %d\n", status);
 						status = look_for_RFID();
+						printf("Status Check 2: %d\n", status);
 						//need to call twice! Don't Touch!! ***
 
 						// Need to call again to be sure. Some hiccups have been occuring that cause a momentary skip. Not enough to kick someone off a machine, but it messes with our event logging. 
@@ -153,10 +160,10 @@ int main(int argc, char *argv[])
 							}
 							// End of double check
 						}
-						use_time = endUse(begin_t);
-						sprintf(use_time_s, "%d", use_time);
-						ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
-						admin_help = 0;
+						// use_time = endUse(begin_t);
+						// sprintf(use_time_s, "%d", use_time);
+						// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
+						// admin_help = 0;
 					}
 				}
 				else if (strchr(JMN_resp,'E') != NULL) {
@@ -165,20 +172,22 @@ int main(int argc, char *argv[])
 				else noUserHandler();
 
 				RFID_refresh();
-			}
-        }
-            
-        if(readHelp(initHelpState) == 1) {
-                contact_admin();
-                ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
-        }
+			}	
+		}
+
+		if(readHelp(initHelpState) == 1) {
+			contact_admin();
+			ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
+		}
 	}
-    RFID_end();
-    GPIO_end();
-    free(RFID_UID);
-    free(JMN_resp);
-    return 0;
+	RFID_end();
+	GPIO_end();
+	free(RFID_UID);
+	free(JMN_resp);
+	return 0;
 }
+
+
 //void get_sid()
 //{
 //	FILE *fp = fopen("sid.txt", "r");
@@ -189,9 +198,9 @@ int main(int argc, char *argv[])
 //		printf("Successfully assigned station %s \n", stid);
 //		fclose(fp);
 //	}
-//}
+// }
 
-void sleep_for_x_ms()
+void sleep_for_x_ms(int x_ms);
 {
 	struct timespec tim, tim2;
 	tim.tv_sec  = 0;
