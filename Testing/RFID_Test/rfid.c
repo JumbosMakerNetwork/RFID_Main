@@ -68,7 +68,7 @@ void RFID_refresh()
 
 int RFID_comparison(char *RFID_UID)
 {
-	PcDHalt();
+	PcdHalt();
 	if(!look_for_RFID()){
 		printf("\nno RFID found when comparing.");
 		return 1;
