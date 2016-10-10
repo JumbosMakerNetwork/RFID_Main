@@ -28,32 +28,32 @@ char *LCD_buff2;
 // Returns the device address of the LCD monitor, or -1 if failure
 void init_GPIO()
  {
-    wiringPiSetup();
-    pinMode(greenLED, OUTPUT);     
-    pinMode(redLED, OUTPUT);    
-    pinMode(relayPin, OUTPUT); 
-    pinMode(HELP_BUTTON, INPUT);
-    pinMode(LCD_3v3, OUTPUT);
-    digitalWrite(LCD_3v3, LOW);  
-    printf("Pi initialized, ready for RFID.\n");
+        wiringPiSetup();
+	pinMode(greenLED, OUTPUT);     
+	pinMode(redLED, OUTPUT);    
+        pinMode(relayPin, OUTPUT); 
+        pinMode(HELP_BUTTON, INPUT);
+        pinMode(LCD_3v3, OUTPUT);
+        digitalWrite(LCD_3v3, LOW);  
+        printf("Pi initialized, ready for RFID.\n");
  }
 
  void activate_LCD()
  {
-    LCD_buff1 = (char *)calloc(16, 1);
-    LCD_buff2 = (char *)calloc(16, 1);
-    digitalWrite(LCD_3v3, HIGH); 
-    delay(100);
-    if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
-            fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
-            return;
-    }
-    char clearcmd[2] = { 254, 1 };
-    write(LCD, clearcmd, 2);
+        LCD_buff1 = (char *)calloc(16, 1);
+        LCD_buff2 = (char *)calloc(16, 1);
+        digitalWrite(LCD_3v3, HIGH); 
+        delay(100);
+        if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
+                fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
+                return;
+        }
+	char clearcmd[2] = { 254, 1 };
+        write(LCD, clearcmd, 2);
 
-    display("Welcome,", "Terminal ready.");
-    delay(1000);
-    display("Waiting for", "RFID...");
+        display("Welcome,", "Terminal ready.");
+        delay(1000);
+        display("Waiting for", "RFID...");
  }
 
  void displayIP(char input[])

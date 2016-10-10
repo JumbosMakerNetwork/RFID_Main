@@ -19,7 +19,7 @@
 
 // #define x_ms 500L
 void sleep_for_x_ms(int x_ms);
-// void readIP();
+void readIP();
 //void get_sid();
 
 char RFID_UID[10];
@@ -111,7 +111,8 @@ int main(int argc, char *argv[])
 			}
 			else {
 				// Just set to true for any RFID. Just checking to see RFID reads
-				JMN_resp = 'T Brian'
+				// JMN_resp = "T Brian";
+				strcpy(JMN_resp, "T Brian");
 				// ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 
 				if (strchr(JMN_resp,'T') != NULL) {
