@@ -162,7 +162,7 @@ int main(int argc, char *argv[])
 							// End of double check
 						}
 						use_time = endUse(begin_t);
-						// sprintf(use_time_s, "%d", use_time);
+						sprintf(use_time_s, "%d", use_time);
 						// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
 						// admin_help = 0;
 					}
