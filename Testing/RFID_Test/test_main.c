@@ -90,9 +90,9 @@ int main(int argc, char *argv[])
 //    }
 
 	int status = 0;
-	// int use_time = 0;
+	int use_time = 0;
 	// int admin_help = 0;
-	// char use_time_s[16];
+	char use_time_s[16];
 	// int initHelpState = readHelp(0);
 	// int initPhotoState = readPhoto(0);
 	
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
 				// ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 
 				if (strchr(JMN_resp,'T') != NULL) {
-					// time_t begin_t = beginUse(JMN_resp);
+					time_t begin_t = beginUse(JMN_resp);
 					while(status == 1){
 						sleep_for_x_ms(500);	
 						// if(readHelp(initHelpState) == 1){
@@ -143,9 +143,9 @@ int main(int argc, char *argv[])
 						// }
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
 						status = look_for_RFID();
-						printf("Status Check 1: %d\n", status);
+						printf("\nStatus Check 1: %d", status);
 						status = look_for_RFID();
-						printf("Status Check 2: %d\n", status);
+						printf("\nStatus Check 2: %d", status);
 						//need to call twice! Don't Touch!! ***
 
 						// Need to call again to be sure. Some hiccups have been occuring that cause a momentary skip. Not enough to kick someone off a machine, but it messes with our event logging. 
@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
 							}
 							// End of double check
 						}
-						// use_time = endUse(begin_t);
+						use_time = endUse(begin_t);
 						// sprintf(use_time_s, "%d", use_time);
 						// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
 						// admin_help = 0;
