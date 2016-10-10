@@ -97,7 +97,8 @@ int main(int argc, char *argv[])
 	// int initPhotoState = readPhoto(0);
 	
 	while(1) {
-		sleep_for_x_ms(500);		
+		sleep_for_x_ms(500);
+		RFID_refresh();	
 		status = look_for_RFID();
 		// printf("Current Status: %d\n", status);
 
@@ -153,8 +154,10 @@ int main(int argc, char *argv[])
 						if(status == 0){
 							printf("\nLost RFID. Double checking that RFID is gone");
 							int j = 0;
-							for (j=1; j < 6; j++) {
+							for (j=1; j < 11; j++) {
 								printf("\nError Check: %d",j);
+								RFID_refresh();
+								delay(500);	// Delay a second, giving chance to pick up the card again
 								if(RFID_comparison(RFID_UID) == 0){
 									printf("\nRFID didn't change. Error was in check.\n");
 									status = 1;
@@ -165,7 +168,7 @@ int main(int argc, char *argv[])
 						}
 					}
 					use_time = endUse(begin_t);
-					printf("\nTime until removal: %d",use_time);
+					printf("\nTime until removal: %d\n",use_time);
 					sprintf(use_time_s, "%d", use_time);
 					// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
 					// admin_help = 0;
