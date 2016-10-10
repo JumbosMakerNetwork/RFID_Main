@@ -69,6 +69,7 @@ void RFID_refresh()
 int RFID_comparison(char *RFID_UID)
 {
 	PcdHalt();
+	delay(1000);	// Delay a second, giving chance to pick up the card again
 	if(!look_for_RFID()){
 		printf("\nno RFID found when comparing.");
 		return 1;

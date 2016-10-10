@@ -153,9 +153,8 @@ int main(int argc, char *argv[])
 						if(status == 0){
 							printf("\nLost RFID. Double checking that RFID is gone");
 							int j = 0;
-							for (j=1; j < 4; j++) {
+							for (j=1; j < 6; j++) {
 								printf("\nError Check: %d",j);
-								delay(1000);	// Delay a second, giving chance to pick up the card again
 								if(RFID_comparison(RFID_UID) == 0){
 									printf("\nRFID didn't change. Error was in check.\n");
 									status = 1;
