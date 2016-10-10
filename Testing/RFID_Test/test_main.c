@@ -117,6 +117,7 @@ int main(int argc, char *argv[])
 
 				if (strchr(JMN_resp,'T') != NULL) {
 					time_t begin_t = beginUse(JMN_resp);
+					printf("\nStarting the new while status = 1 loop..."); 
 					while(status == 1){
 						sleep_for_x_ms(500);	
 						// if(readHelp(initHelpState) == 1){
@@ -155,17 +156,17 @@ int main(int argc, char *argv[])
 							for (j=1; j < 3; j++) {
 								delay(1000);	// Delay a second, giving chance to pick up the card again
 								if(RFID_comparison(RFID_UID) == 0){
-									printf("\nRFID didn't change. Error was in check.");
+									printf("\nRFID didn't change. Error was in check.\n");
 									status = 1;
 								}
 							}
 							// End of double check
 						}
-						use_time = endUse(begin_t);
-						sprintf(use_time_s, "%d", use_time);
-						// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
-						// admin_help = 0;
 					}
+					use_time = endUse(begin_t);
+					sprintf(use_time_s, "%d", use_time);
+					// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
+					// admin_help = 0;
 				}
 				else if (strchr(JMN_resp,'E') != NULL) {
 					rejectUse();
