@@ -90,11 +90,11 @@ int main(int argc, char *argv[])
 //    }
 
 	int status = 0;
-	int use_time = 0;
-	int admin_help = 0;
-	char use_time_s[16];
-	int initHelpState = readHelp(0);
-	int initPhotoState = readPhoto(0);
+	// int use_time = 0;
+	// int admin_help = 0;
+	// char use_time_s[16];
+	// int initHelpState = readHelp(0);
+	// int initPhotoState = readPhoto(0);
 	
 	while(1) {
 		sleep_for_x_ms(500);		
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
 				// ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 
 				if (strchr(JMN_resp,'T') != NULL) {
-					time_t begin_t = beginUse(JMN_resp);
+					// time_t begin_t = beginUse(JMN_resp);
 					while(status == 1){
 						sleep_for_x_ms(500);	
 						// if(readHelp(initHelpState) == 1){
@@ -201,7 +201,7 @@ int main(int argc, char *argv[])
 //	}
 // }
 
-void sleep_for_x_ms(int x_ms);
+void sleep_for_x_ms(int x_ms)
 {
 	struct timespec tim, tim2;
 	tim.tv_sec  = 0;
