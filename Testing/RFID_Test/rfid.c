@@ -69,12 +69,12 @@ void RFID_refresh()
 int RFID_comparison(char *RFID_UID)
 {
 	if(!look_for_RFID()){
-		printf("no RFID found when comparing.\n");
+		printf("\nno RFID found when comparing.");
 		return 1;
 	}
 	char *new_RFID = (char *)calloc(10,1);
 	get_RFID(new_RFID);
-	printf("reading card: %s\n", new_RFID);
+	printf("\nreading card: %s", new_RFID);
 	int cmp = strcmp(RFID_UID, new_RFID);
 	free(new_RFID);
 	return cmp;

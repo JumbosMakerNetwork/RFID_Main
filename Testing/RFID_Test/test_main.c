@@ -112,13 +112,13 @@ int main(int argc, char *argv[])
 			else {
 				// Just set to true for any RFID. Just checking to see RFID reads
 				// JMN_resp = "T Brian";
-				strcpy(JMN_resp, "T Brian");
+				strcpy(JMN_resp, "True Brian");
 				// ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 
 				if (strchr(JMN_resp,'T') != NULL) {
 					time_t begin_t = beginUse(JMN_resp);
 					printf("\nStarting the new while status = 1 loop..."); 
-					while(status == 1){
+					In_Use:while(status == 1){
 						sleep_for_x_ms(500);	
 						// if(readHelp(initHelpState) == 1){
 						// 	if(admin_help == 0) {
@@ -144,26 +144,29 @@ int main(int argc, char *argv[])
 						// }
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
 						status = look_for_RFID();
-						printf("\nStatus Check 1: %d", status);
+						// printf("\nStatus Check 1: %d", status);
 						status = look_for_RFID();
-						printf("\nStatus Check 2: %d", status);
+						// printf("\nStatus Check 2: %d", status);
 						//need to call twice! Don't Touch!! ***
 
 						// Need to call again to be sure. Some hiccups have been occuring that cause a momentary skip. Not enough to kick someone off a machine, but it messes with our event logging. 
 						if(status == 0){
-							printf("\nDouble checking that RFID is gone");
+							printf("\nLost RFID. Double checking that RFID is gone");
 							int j = 0;
-							for (j=1; j < 3; j++) {
+							for (j=1; j < 4; j++) {
+								printf("\nError Check: %d",j);
 								delay(1000);	// Delay a second, giving chance to pick up the card again
 								if(RFID_comparison(RFID_UID) == 0){
 									printf("\nRFID didn't change. Error was in check.\n");
 									status = 1;
+									goto In_Use;
 								}
 							}
 							// End of double check
 						}
 					}
 					use_time = endUse(begin_t);
+					printf("\nTime until removal: %d",use_time);
 					sprintf(use_time_s, "%d", use_time);
 					// ReqJMN(JMN_resp, RFID_UID, "2", use_time_s, stid);
 					// admin_help = 0;
@@ -174,7 +177,7 @@ int main(int argc, char *argv[])
 				else noUserHandler();
 
 				RFID_refresh();
-			}	
+			}
 		}
 
 		// if(readHelp(initHelpState) == 1) {
