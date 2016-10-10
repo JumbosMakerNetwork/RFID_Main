@@ -176,10 +176,10 @@ int main(int argc, char *argv[])
 			}	
 		}
 
-		if(readHelp(initHelpState) == 1) {
-			contact_admin();
-			ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
-		}
+		// if(readHelp(initHelpState) == 1) {
+		// 	contact_admin();
+		// 	ReqJMN(JMN_resp, "0", "4", "contact_admin", stid);
+		// }
 	}
 	RFID_end();
 	GPIO_end();
