@@ -60,7 +60,7 @@
 #define     CRCResultRegM         0x21
 #define     CRCResultRegL         0x22
 #define     ModWidthReg           0x24
-#define     RFCfgReg              (0x26 << 4)
+#define     RFCfgReg              0x26
 // #define		RFCfgReg			(*(volatile unsigned char *)0x26)
 #define     GsNReg                0x27
 #define     CWGsCfgReg            0x28
