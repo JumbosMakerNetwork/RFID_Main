@@ -7,6 +7,11 @@
 
 void InitRc522(void)
 {
+	// Set the gain to 48 dB
+	// http://www.nxp.com/documents/data_sheet/MFRC522.pdf
+	RFCfgReg |= bit(4);
+	RFCfgReg |= bit(5);
+	RFCfgReg |= bit(6);
 	PcdReset();
 	PcdAntennaOn();
 }
