@@ -137,14 +137,19 @@ int main(int argc, char *argv[])
 						}
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
 						status = look_for_RFID();
-						int k = 0;
-						for (k=1; k < 6; k++) {
-							if (status == 0) {
-								status = look_for_RFID();
-								printf("Status Check %d:", k);
-								printf(" %d", status);
+						status = look_for_RFID();
+						if (status == 0) {
+							printf("RFID Lost");
+							int k = 0;
+							for (k=1; k < 6; k++) {
+								if (status == 0) {
+									status = look_for_RFID();
+									printf("Status Check %d:", k);
+									printf(" %d", status);
+								}
 							}
 						}
+
 
 						// status = look_for_RFID();
 						// printf("\nStatus Check 1: %d", status);
