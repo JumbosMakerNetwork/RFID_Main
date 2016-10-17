@@ -136,6 +136,7 @@ int main(int argc, char *argv[])
 							display("Commence","Use...");
 						}
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
+						status = look_for_RFID();
 						int k = 0;
 						for (k=1; k < 6; k++) {
 							if (status == 0) {
