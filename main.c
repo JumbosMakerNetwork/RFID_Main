@@ -139,13 +139,13 @@ int main(int argc, char *argv[])
 						status = look_for_RFID();
 						status = look_for_RFID();
 						if (status == 0) {
-							printf("RFID Lost");
+							printf("RFID Lost\n");
 							int k = 0;
 							for (k=1; k < 6; k++) {
 								if (status == 0) {
 									status = look_for_RFID();
 									printf("Status Check %d:", k);
-									printf(" %d", status);
+									printf(" %d\n", status);
 								}
 							}
 						}
