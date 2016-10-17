@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
 						if (status == 0) {
 							printf("RFID Lost\n");
 							int k = 0;
-							for (k=1; k < 11; k++) {
+							for (k=1; k < 21; k++) {
 								if (status == 0) {
 									status = look_for_RFID();
 									printf("Status Check %d:", k);
