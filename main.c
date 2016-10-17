@@ -136,23 +136,32 @@ int main(int argc, char *argv[])
 							display("Commence","Use...");
 						}
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
-						status = look_for_RFID();
-						printf("\nStatus Check 1: %d", status);
-						status = look_for_RFID();
-						printf("\nStatus Check 1: %d", status);
+						int k = 0;
+						for (k=1; k < 6; k++) {
+							if (status == 0){
+								status = look_for_RFID();
+								printf("Status Check %d:", k);
+								printf(" %d", status;
+							}
+						}
+
+						// status = look_for_RFID();
+						// printf("\nStatus Check 1: %d", status);
+						// status = look_for_RFID();
+						// printf("\nStatus Check 2: %d", status);
 						//need to call twice! Don't Touch!! ***
 
 						// Need to call again to be sure. Some hiccups have been occuring that cause a momentary skip. Not enough to kick someone off a machine, but it messes with our event logging. 
-						if(status == 0){
-							printf("\nDouble checking that RFID is gone");
-							int j = 0;
-							for (j=1; j < 3; j++) {
-								delay(1000);	// Delay a second, giving chance to pick up the card again
-								if(RFID_comparison(RFID_UID) == 0){
-									printf("\nRFID didn't change. Error was in check.");
-									status = 1;
-								}
-							}
+						// if(status == 0){
+						// 	printf("\nDouble checking that RFID is gone");
+						// 	int j = 0;
+						// 	for (j=1; j < 6; j++) {
+						// 		delay(1000);	// Delay a second, giving chance to pick up the card again
+						// 		if(RFID_comparison(RFID_UID) == 0){
+						// 			printf("\nRFID didn't change. Error was in check.");
+						// 			status = 1;
+						// 		}
+						// 	}
 							// End of double check
 						}
 					}
