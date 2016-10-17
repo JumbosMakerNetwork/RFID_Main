@@ -162,8 +162,8 @@ int main(int argc, char *argv[])
 						// 			status = 1;
 						// 		}
 						// 	}
-							// End of double check
-						}
+						// 	// End of double check
+						// }
 					}
 					use_time = endUse(begin_t);
 					sprintf(use_time_s, "%d", use_time);
