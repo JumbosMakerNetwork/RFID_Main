@@ -70,7 +70,8 @@ int RFID_comparison(char *RFID_UID)
 {
 	if(!look_for_RFID()){
 		printf("no RFID found when comparing.\n");
-		return 0;
+		// return 0;
+		return 1;
 	}
 	char *new_RFID = (char *)calloc(10,1);
 	get_RFID(new_RFID);

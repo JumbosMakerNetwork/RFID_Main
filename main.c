@@ -137,7 +137,9 @@ int main(int argc, char *argv[])
 						}
 						//need to call twice! Don't Touch!! *** It's a weird thing. No idea why yet. but it works.
 						status = look_for_RFID();
+						printf("\nStatus Check 1: %d", status);
 						status = look_for_RFID();
+						printf("\nStatus Check 1: %d", status);
 						//need to call twice! Don't Touch!! ***
 
 						// Need to call again to be sure. Some hiccups have been occuring that cause a momentary skip. Not enough to kick someone off a machine, but it messes with our event logging. 
