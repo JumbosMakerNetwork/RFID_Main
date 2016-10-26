@@ -36,8 +36,7 @@ char MacAdd[64];
 */
 int main(int argc, char *argv[])
 {
-//	get_sid();
-	printf("\nStarting the Interlock application\n")
+	printf("\nStarting the Interlock application\n");
 	char *RFID_UID = (char *)calloc(10,1);
 	char *JMN_resp = (char *)calloc(512,1);
 
