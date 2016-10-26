@@ -36,7 +36,6 @@ char IP[64];
 int main(int argc, char *argv[])
 {
 	printf("\nStarting the SignIn application\n");
-//	get_sid();
 	char *RFID_UID = (char *)calloc(10,1);
 	char *JMN_resp = (char *)calloc(512,1);
 

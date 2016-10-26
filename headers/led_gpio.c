@@ -126,13 +126,14 @@ void SigningIn(char *resp)
 {
     char *name = (char *)calloc(16,1);
     digitalWrite(greenLED, HIGH);
-    digitalWrite(relayPin, HIGH);
+    // digitalWrite(relayPin, HIGH);
     getName(name, resp);
     display("Welcome", name);
     free(name);
     digitalWrite(greenLED, HIGH);
     delay(2000);
     display("Waiting for", "RFID..");
+    digitalWrite(greenLED, LOW);
     // digitalWrite(relayPin, HIGH);
     // display("Commence","Use...");
     // time_t curr_time;
