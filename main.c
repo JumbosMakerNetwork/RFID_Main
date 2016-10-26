@@ -25,6 +25,7 @@ void readIP();
 char RFID_UID[10];
 char stid[10];
 char IP[64];
+char MacAdd[64];
 
 /* Main :
  *      First, initialize RFID and GPIO components
@@ -59,6 +60,13 @@ int main(int argc, char *argv[])
 				strcpy(stid, argv[i]);
 				printf("\nSuccessfully assigned station %s", stid);
 			}
+			// else if(strcmp(argv[i], "-IP") == 0) {
+			// 	i++;
+			// 	printf("\narg%d= ", i);
+			// 	printf("%s", argv[i]);
+			// 	strcpy(MacAdd, argv[i]);
+			// 	printf("\nSuccessfully assigned Mac Address %s", MacAdd);
+			// }
 			else if(strcmp(argv[i], "-IP") == 0) {
 				i++;
 				// Check if there is an IP attached
