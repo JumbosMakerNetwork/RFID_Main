@@ -16,11 +16,11 @@ if git -C /home/rfid/TSync status | grep -q 'Your branch is up-to-date'
 		echo 'up-to-date'
 		exit 1
 	else
-		echo 'Update required - pulling from GitHub'
+		echo 'Update required - pulling from GitHub...'
 		# Pull updates from the repository
 		sudo git -C /home/rfid/TSync pull
 		# Recompile the RFID application
-		echo 'Recompiling rfid application'
+		echo 'Recompiling applications...'
 		sudo sh /home/rfid/TSync/compile1.sh
 		# Include a delay to allow for the compile to occur
 		echo 'Rebooting sytem...'
