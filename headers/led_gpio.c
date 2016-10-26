@@ -132,6 +132,7 @@ void SigningIn(char *resp)
     free(name);
     digitalWrite(greenLED, HIGH);
     delay(2000);
+    display("Waiting for", "RFID..");
     // digitalWrite(relayPin, HIGH);
     // display("Commence","Use...");
     // time_t curr_time;
