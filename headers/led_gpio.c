@@ -34,6 +34,9 @@ void init_GPIO()
     pinMode(relayPin, OUTPUT); 
     pinMode(HELP_BUTTON, INPUT);
     pinMode(LCD_3v3, OUTPUT);
+    digitalWrite(greenLED, LOW);
+    digitalWrite(redLED, LOW);
+    digitalWrite(relayPin, LOW);
     digitalWrite(LCD_3v3, LOW);  
     printf("Pi initialized, ready for RFID.\n");
 }
