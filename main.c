@@ -7,10 +7,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "rfid.h"
-#include "curl_req.h"
-#include "led_gpio.h"
-#include "camera.h"
+#include "headers/rfid.h"
+#include "headers/curl_req.h"
+#include "headers/led_gpio.h"
+#include "headers/camera.h"
 #include <errno.h>
 #include <string.h>
 #include <wiringPi.h>

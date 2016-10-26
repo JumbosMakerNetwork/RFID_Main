@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
 				} 
 				else noUserHandler();
 
-				RFID_refresh()
+				RFID_refresh();
 			}
 
 
