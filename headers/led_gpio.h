@@ -25,6 +25,7 @@ void 	noUserHandler();
 void	SigningIn();
 void 	contact_admin();
 void 	sendHelp();
+void	readError();
 
 // LCD utils
 void 	getName(char *name_buff, char *response);

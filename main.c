@@ -104,14 +104,17 @@ int main(int argc, char *argv[])
 	int initPhotoState = readPhoto(0);
 	
 	while(1) {
-		sleep_for_x_ms();		
+		RFID_refresh();
+		sleep_for_x_ms();
+
 		status = look_for_RFID();
 
         if(status == 1){
             get_RFID(RFID_UID);
             printf("New tag: %s\n", RFID_UID);             
 			if(strcmp(RFID_UID, "") == 0) {
-				display("RFID read error","Try again.");
+				readError();
+				// display("RFID read error","Try again.");
 			}
 			else {
 				ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
@@ -188,7 +191,7 @@ int main(int argc, char *argv[])
 				} 
 				else noUserHandler();
 
-				RFID_refresh();
+				// RFID_refresh();
 			}
         }
             

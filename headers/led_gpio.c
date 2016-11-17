@@ -154,6 +154,7 @@ void rejectUse()
         digitalWrite(relayPin, LOW);
         display("Waiting for", "RFID..");
 }
+
 void noUserHandler()
 {
         display("No ID found","in Database");
@@ -163,6 +164,26 @@ void noUserHandler()
         display("Get approved at","maker.tufts.edu"); 
         digitalWrite(redLED, LOW);
         delay(1000);
+        display("Waiting for", "RFID..");
+}
+
+void readError()
+{
+        display("RFID read error","Try again.");
+        digitalWrite(greenLED, LOW);
+        digitalWrite(relayPin, HIGH);
+        delay(250);
+        digitalWrite(greenLED, HIGH);
+        digitalWrite(relayPin, LOW);
+        delay(250);
+        digitalWrite(greenLED, LOW);
+        digitalWrite(relayPin, HIGH);
+        delay(250);
+        digitalWrite(greenLED, HIGH);
+        digitalWrite(relayPin, LOW);
+        delay(250); 
+        digitalWrite(greenLED, LOW);
+        digitalWrite(relayPin, LOW);
         display("Waiting for", "RFID..");
 }
 
