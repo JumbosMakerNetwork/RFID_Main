@@ -170,20 +170,21 @@ void noUserHandler()
 void readError()
 {
         display("RFID read error","Try again.");
+        digitalWrite(relayPin, LOW);
         digitalWrite(greenLED, LOW);
-        digitalWrite(relayPin, HIGH);
+        digitalWrite(redPin, HIGH);
         delay(100);
         digitalWrite(greenLED, HIGH);
-        digitalWrite(relayPin, LOW);
+        digitalWrite(redPin, LOW);
         delay(100);
         digitalWrite(greenLED, LOW);
-        digitalWrite(relayPin, HIGH);
+        digitalWrite(redPin, HIGH);
         delay(100);
         digitalWrite(greenLED, HIGH);
-        digitalWrite(relayPin, LOW);
+        digitalWrite(redPin, LOW);
         delay(100); 
         digitalWrite(greenLED, LOW);
-        digitalWrite(relayPin, LOW);
+        digitalWrite(redPin, LOW);
         delay(100);
         display("Waiting for", "RFID..");
 }
