@@ -24,7 +24,7 @@ if git -C /home/rfid/TSync status | grep -q 'Your branch is up-to-date'
 		sudo sh /home/rfid/TSync/compile1.sh
 		# Include a delay to allow for the compile to occur
 		echo 'Rebooting sytem...'
-		sleep 90
+		sleep 30
 		# Reeboot for good measure
 		sudo reboot	
 fi
