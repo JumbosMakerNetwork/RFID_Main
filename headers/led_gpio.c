@@ -172,18 +172,19 @@ void readError()
         display("RFID read error","Try again.");
         digitalWrite(greenLED, LOW);
         digitalWrite(relayPin, HIGH);
-        delay(250);
+        delay(100);
         digitalWrite(greenLED, HIGH);
         digitalWrite(relayPin, LOW);
-        delay(250);
+        delay(100);
         digitalWrite(greenLED, LOW);
         digitalWrite(relayPin, HIGH);
-        delay(250);
+        delay(100);
         digitalWrite(greenLED, HIGH);
         digitalWrite(relayPin, LOW);
-        delay(250); 
+        delay(100); 
         digitalWrite(greenLED, LOW);
         digitalWrite(relayPin, LOW);
+        delay(100);
         display("Waiting for", "RFID..");
 }
 
