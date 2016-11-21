@@ -15,7 +15,7 @@ chk=$(pgrep $stn)
 
 while [ -n "$chk" ];
 do
-	sleep 60
+	sleep 30
 	chk=$(pgrep $stn)
 done
 

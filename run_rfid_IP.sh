@@ -23,7 +23,6 @@ fi
 
 # echo $cmd
 
-
 # eval $cmd
 
 # chk=$(pgrep $stn)
