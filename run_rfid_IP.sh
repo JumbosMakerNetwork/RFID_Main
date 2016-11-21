@@ -9,31 +9,31 @@ IPAdd=$(hostname -I)
 # This eventually needs to be cleaner. Look through all for the "-SI" even though it will only ever be 2
 if [ "$2" = "-SI" ]; then
 	echo "Configuring as a SignIn Station"
-	stn="SignIn"
-	cmd="sudo /home/rfid/TSync/SignIn -STID $SID -IP $IPAdd &"
-	# sudo /home/rfid/TSync/SignIn -STID $SID -IP $IPAdd &
-	# sudo sh /home/rfid/TSync/ProcessChk.sh $SID -SI &
+	# stn="SignIn"
+	# cmd="sudo /home/rfid/TSync/SignIn -STID $SID -IP $IPAdd &"
+	sudo /home/rfid/TSync/SignIn -STID $SID -IP $IPAdd &
+	sudo sh /home/rfid/TSync/ProcessChk.sh $SID -SI &
 else
 	echo "Configuring as an Interlock Terminal"
-	stn="rfid"
-	cmd="sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &"
-	# sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &
-	# sudo sh /home/rfid/TSync/ProcessChk.sh $SID &
+	# stn="rfid"
+	# cmd="sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &"
+	sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &
+	sudo sh /home/rfid/TSync/ProcessChk.sh $SID &
 fi
 
 # echo $cmd
 
-eval $cmd
+# eval $cmd
 
-chk=$(pgrep $stn)
+# chk=$(pgrep $stn)
 
-while [ -n "$chk" ];
-do
-	sleep 60
-	chk=$(pgrep $stn)
-done
+# while [ -n "$chk" ];
+# do
+# 	sleep 60
+# 	chk=$(pgrep $stn)
+# done
 
-eval $cmd
+# eval $cmd
 
 # sleep 15
 # # echo "Starting Process Script check"
