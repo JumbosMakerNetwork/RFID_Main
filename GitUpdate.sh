@@ -22,13 +22,11 @@ if git -C /home/rfid/TSync status | grep -q 'Your branch is up-to-date'
 		# Recompile the RFID application
 		echo 'Recompiling applications...'
 		sudo sh /home/rfid/TSync/compile1.sh
-		# Include a delay to allow for the compile to occur
-		echo 'Rebooting sytem...'
-		# Set all pins low, or at the very least pin LOW - echo "0" > /sys/class/gpio/gpio18/value
+		# Turn of the LCD
 		sudo echo "18" > /sys/class/gpio/export                 
 		sudo echo "out" > /sys/class/gpio/gpio18/direction
 		sudo echo "0" > /sys/class/gpio/gpio18/value
-		
+		echo 'Rebooting sytem...'		
 		sleep 5
 		# Reeboot for good measure
 		sudo reboot	

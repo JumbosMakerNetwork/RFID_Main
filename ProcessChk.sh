@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 5
 SID=$1
 
 # This eventually needs to be cleaner. Look through all for the "-SI" even though it will only ever be 2
