@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
 	init_RFID();
 	init_GPIO();
-	delay(5000);
+	delay(9000);
 	activate_LCD();
 
 	// Collect the command line arguments to assign SID and Display current IP address
