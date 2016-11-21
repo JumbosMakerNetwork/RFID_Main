@@ -7,6 +7,7 @@ do
 	then
 		echo "Application not running"
 		echo "Restarting application"
+		echo $1
 	    # sudo reboot
 	    eval $1
 	fi
