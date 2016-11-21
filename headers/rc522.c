@@ -237,7 +237,8 @@ char PcdReset(void)
 	WriteRawRC(ModeReg,0x3D);            //6363
 	//	WriteRawRC(DivlEnReg,0x90);
 	WriteRawRC(RxThresholdReg,0x84);
-	WriteRawRC(RFCfgReg,0x68);
+	// WriteRawRC(RFCfgReg,0x68); // THis is the default
+	WriteRawRC(RFCfgReg,0x7F); // This should increase the gain, theoretically
 	WriteRawRC(GsNReg,0xff);
 	WriteRawRC(CWGsCfgReg,0x2f);
 	//	WriteRawRC(ModWidthReg,0x2f);

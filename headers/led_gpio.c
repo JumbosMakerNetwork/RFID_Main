@@ -51,8 +51,6 @@ void activate_LCD()
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
-    // char rst[2] = { 18, 1 };
-    // write(LCD, rst, 2);
     delay(50);
 	char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
@@ -95,9 +93,9 @@ void displayIP(char input[])
     printf("Line 2:\n%s\n",line2);
 
     display("Current IP", "Address:");
-    delay(1500);
+    delay(1000);
     display(line1, line2);
-    delay(5000);
+    delay(3000);
     display("Waiting for", "RFID...");
 }
 
