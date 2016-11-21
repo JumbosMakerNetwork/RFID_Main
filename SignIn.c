@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
 	init_RFID();
 	init_GPIO();
-	delay(9000); // Needed to wait for login to finish with /dev/ttyAMA0
+	delay(10000); // Needed to wait for login to finish with /dev/ttyAMA0
 	activate_LCD();
 
 	// Collect the command line arguments to assign SID and Display current IP address

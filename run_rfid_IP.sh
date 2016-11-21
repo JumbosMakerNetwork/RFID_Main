@@ -1,6 +1,6 @@
 #!/bin/sh
 # hostname -I | sudo /home/dolanwill/rfid/rfid -IP &
-sleep 20
+sleep 30
 SID=$1
 # MacAdd=$(cat /sys/class/net/wlan0/address)
 IPAdd=$(hostname -I)
