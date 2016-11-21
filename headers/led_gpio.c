@@ -51,8 +51,8 @@ void activate_LCD()
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
-    char rst[2] = { 18, 1 };
-    write(LCD, rst, 2);
+    // char rst[2] = { 18, 1 };
+    // write(LCD, rst, 2);
     delay(50);
 	char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);

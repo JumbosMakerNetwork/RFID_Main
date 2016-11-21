@@ -22,7 +22,7 @@ echo $cmd
 eval $cmd
 
 sleep 15
-echo "Starting Process Script check"
+# echo "Starting Process Script check"
 
 while true
 do
@@ -31,7 +31,7 @@ do
 	chk=$(pgrep $stn)
 	if ! [ -n "$chk" ];
 		then
-		echo "Application not running. Restarting Process..."
+		# echo "Application not running. Restarting Process..."
 		eval $cmd
 	fi
 done
