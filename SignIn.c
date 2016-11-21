@@ -57,6 +57,8 @@ int main(int argc, char *argv[])
 				printf("%s", argv[i]);
 				strcpy(stid, argv[i]);
 				printf("\nSuccessfully assigned station %s", stid);
+				display("Station:",stid);
+				delay(1000);
 			}
 			else if(strcmp(argv[i], "-IP") == 0) {
 				i++;
