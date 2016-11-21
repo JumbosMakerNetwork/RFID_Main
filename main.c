@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
 	init_RFID();
 	init_GPIO();
-	delay(1000);
+	delay(5000);
 	activate_LCD();
 
 	// Collect the command line arguments to assign SID and Display current IP address
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 				strcpy(stid, argv[i]);
 				printf("\nSuccessfully assigned station %s", stid);
 				display("Station:",stid);
-				delay(1000);
+				delay(3000);
 			}
 
 			// else if(strcmp(argv[i], "-IP") == 0) {
