@@ -12,7 +12,6 @@ do
 	fi
 done
 
-
-sudo sh /home/rfid/TSync/run_rfid_IP.sh 27
+# sudo sh /home/rfid/TSync/run_rfid_IP.sh 27
 
 
