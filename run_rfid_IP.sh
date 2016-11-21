@@ -8,9 +8,17 @@ IPAdd=$(hostname -I)
 
 if [ "$2" = "-SI" ]; then
 	echo "Configuring as a SignIn Station"
-	sudo /home/rfid/TSync/SignIn -STID $SID -IP $IPAdd &
+	stn = "SignIn"
+	cmd  = "sudo /home/rfid/TSync/SignIn -STID $SID -IP $IPAdd &"
 else
 	echo "Configuring as an Interlock Terminal"
-	sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &
+	stn = "rfid"
+	cmd = "sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &"
 fi
+
+echo $cmd
+
+eval $cmd
+
+sudo /home/rfid/TSync/ProcessChk.sh $cmd
 

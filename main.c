@@ -34,6 +34,7 @@ char MacAdd[64];
  *      send a //request to JMN DB w/ RFID, then take appropriate action
  *      based on response. Look for help/photo button depress throughout loop.
 */
+
 int main(int argc, char *argv[])
 {
 	printf("\nStarting the Interlock application\n");
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
 
 	init_RFID();
 	init_GPIO();
-	delay(9000);
+	delay(1000);
 	activate_LCD();
 
 	// Collect the command line arguments to assign SID and Display current IP address
@@ -58,7 +59,10 @@ int main(int argc, char *argv[])
 				printf("%s", argv[i]);
 				strcpy(stid, argv[i]);
 				printf("\nSuccessfully assigned station %s", stid);
+				display("Station:",stid);
+				delay(1000);
 			}
+
 			// else if(strcmp(argv[i], "-IP") == 0) {
 			// 	i++;
 			// 	printf("\narg%d= ", i);
@@ -66,6 +70,7 @@ int main(int argc, char *argv[])
 			// 	strcpy(MacAdd, argv[i]);
 			// 	printf("\nSuccessfully assigned Mac Address %s", MacAdd);
 			// }
+
 			else if(strcmp(argv[i], "-IP") == 0) {
 				i++;
 				// Check if there is an IP attached

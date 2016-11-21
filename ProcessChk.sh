@@ -6,7 +6,13 @@ do
 	if ! [ pgrep "rfid" > /dev/null ] || ! [ pgrep "SignIn" > /dev/null ]
 	then
 		echo "Application not running"
-		echo "Rebooting system"
-	    sudo reboot
+		echo "Restarting application"
+	    # sudo reboot
+	    eval $1
 	fi
 done
+
+
+sudo sh /home/rfid/TSync/run_rfid_IP.sh 27
+
+
