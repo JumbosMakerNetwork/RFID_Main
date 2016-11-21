@@ -46,11 +46,14 @@ void activate_LCD()
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
     digitalWrite(LCD_3v3, HIGH); 
-    delay(100);
+    delay(50);
     if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
+    char rst[2] = { 18, 1 };
+    write(LCD, rst, 2);
+    delay(50);
 	char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
 
