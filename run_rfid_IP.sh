@@ -21,5 +21,6 @@ echo $cmd
 
 eval $cmd
 
-sudo sh /home/rfid/TSync/ProcessChk.sh $cmd
+echo "Starting Process Script check"
+sudo sh /home/rfid/TSync/ProcessChk.sh $cmd &
 
