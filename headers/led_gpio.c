@@ -46,7 +46,7 @@ void activate_LCD()
     delay(10000); // Needed to wait for login to finish with /dev/ttyAMA0
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
-    digitalWrite(LCD_3v3, HIGH); 
+
     delay(50);
     if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
@@ -60,6 +60,8 @@ void activate_LCD()
         n = read(LCD, buff, sizeof(buff));
         printf("Waiting for quiet /dev/ttyAMA0 ... ");
     }
+
+    digitalWrite(LCD_3v3, HIGH); 
 
     delay(50);
 	char clearcmd[2] = { 254, 1 };
