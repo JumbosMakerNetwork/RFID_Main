@@ -61,6 +61,27 @@ void activate_LCD()
     //     printf("Waiting for quiet /dev/ttyAMA0 ... ");
     // }
 
+    bool AMA0_Feed = true;
+    char buff[32];
+    DateTime time;
+    int timeout = 25;
+    while (AMA0_Feed) {
+        time = DateTime.Now;
+        try {
+            int n = read(LCD, buff, sizeof(buff));
+            printf("Waiting for quiet /dev/ttyAMA0 ... ");
+            AMA0_Feed = true;
+        }
+        catch (Exception ex) {
+            if (DateTime.Now.Subtract(time).Milliseconds > timeout) {
+                printf("/dev/ttyAMA0 quiet ... ");
+                AMA0_Feed = false;
+                throw;
+            }
+        }
+    }
+
+
     digitalWrite(LCD_3v3, HIGH); 
 
     delay(50);
