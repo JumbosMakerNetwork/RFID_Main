@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
-#include <sys/time.h>
+#include <time.h>
 #include <unistd.h>
 #include <wiringPi.h>
 #include <wiringSerial.h>
@@ -71,14 +71,12 @@ void activate_LCD()
 
     while (AMA0_Feed) {
         t_last = time(NULL);
-        try 
-        {
+        __try{
             int n = read(LCD, buff, sizeof(buff));
             printf("Waiting for quiet /dev/ttyAMA0 ... ");
             AMA0_Feed = true;
         }
-        catch (Exception ex) 
-        {
+        __catch (Exception ex){
             t_now = time(NULL);
             if (difftime(t_now, t_last) > timeout) {
                 printf("/dev/ttyAMA0 quiet ... ");
