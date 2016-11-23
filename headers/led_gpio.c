@@ -64,17 +64,20 @@ void activate_LCD()
 
     bool AMA0_Feed = true;
     char buff[32];
-    DateTime time;
-    int timeout = 25;
+    time_t t_last;
+    time_t t_now;
+    double timeout = 1;
+
     while (AMA0_Feed) {
-        time = DateTime.Now;
+        t_last = time(NULL);
         try {
             int n = read(LCD, buff, sizeof(buff));
             printf("Waiting for quiet /dev/ttyAMA0 ... ");
             AMA0_Feed = true;
         }
         catch (Exception ex) {
-            if (DateTime.Now.Subtract(time).Milliseconds > timeout) {
+            t_now = time(NULL);
+            if (difftime(t_now, t_last) > timeout) {
                 printf("/dev/ttyAMA0 quiet ... ");
                 AMA0_Feed = false;
                 throw;
