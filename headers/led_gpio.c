@@ -53,13 +53,13 @@ void activate_LCD()
         return;
     }
 
-    char buff[32];
-    int n = read(LCD, buff, sizeof(buff));
-    while (n > 0) {
-        delay(25);
-        n = read(LCD, buff, sizeof(buff));
-        printf("Waiting for quiet /dev/ttyAMA0 ... ");
-    }
+    // char buff[32];
+    // int n = read(LCD, buff, sizeof(buff));
+    // while (n > 0) {
+    //     delay(25);
+    //     n = read(LCD, buff, sizeof(buff));
+    //     printf("Waiting for quiet /dev/ttyAMA0 ... ");
+    // }
 
     digitalWrite(LCD_3v3, HIGH); 
 
