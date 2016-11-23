@@ -54,10 +54,10 @@ void activate_LCD()
     }
 
     char buff[32];
-    int n = read(fd, buffer, sizeof(buff));
+    int n = read(fd, buff, sizeof(buff));
     while (n > 0) {
         delay(25);
-        n = read(fd, buffer, sizeof(buff));
+        n = read(fd, buff, sizeof(buff));
         printf("Waiting for quiet /dev/ttyAMA0 ... ");
     }
 
