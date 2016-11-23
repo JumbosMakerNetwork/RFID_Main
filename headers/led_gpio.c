@@ -12,6 +12,7 @@
 #include <wiringSerial.h>
 #include <time.h>
 #include <unistd.h>
+#include <stdbool.h>
 #include "led_gpio.h"
 
 #define greenLED 29
