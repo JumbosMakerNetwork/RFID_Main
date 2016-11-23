@@ -43,6 +43,7 @@ void init_GPIO()
 
 void activate_LCD()
 {
+    delay(10000); // Needed to wait for login to finish with /dev/ttyAMA0
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
     digitalWrite(LCD_3v3, HIGH); 
@@ -51,9 +52,19 @@ void activate_LCD()
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
+
+    char buff[32];
+    int n = read(fd, buffer, sizeof(buff));
+    while (n > 0) {
+        delay(25);
+        n = read(fd, buffer, sizeof(buff));
+        printf("Waiting for quiet /dev/ttyAMA0 ... ");
+    }
+
     delay(50);
 	char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
+    printf("LCD activated.\n");
 
     display("Welcome,", "Terminal ready.");
     delay(1000);
