@@ -21,22 +21,9 @@ done
 
 eval $cmd
 
-# sleep 15
-# # echo "Starting Process Script check"
 
-# while true
-# do
-# 	sleep 60
-# 	# Check if either process is running
-# 	chk=$(pgrep $stn)
-# 	if ! [ -n "$chk" ];
-# 		then
-# 		# echo "Application not running. Restarting Process..."
-# 		eval $cmd
-# 	fi
-# done
-
-# if [ -n "$(pgrep $stn)"]; then echo "Running"; else echo "Not running"; fi
-# if ! [ -n "$chk1" ]; then echo "Not Running"; fi
-
-
+# if ping -c 1 130.64.17.0 >> /dev/null 2>&1; then
+#     echo "online"
+# else
+#     echo "offline"
+# fi
