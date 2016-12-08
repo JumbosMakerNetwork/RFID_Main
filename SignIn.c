@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	display("Waiting for", "RFID...");
 
 	int status = 0;
 	// int use_time = 0;

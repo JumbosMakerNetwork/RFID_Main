@@ -94,11 +94,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-//	if(argc > 1) {
-//		if(strcmp(argv[1], "-IP") == 0) {
-//		        readIP();
-//		}
-//    }
+	display("Waiting for", "RFID...");
 
 	int status = 0;
 	int use_time = 0;
@@ -121,6 +117,7 @@ int main(int argc, char *argv[])
 				// display("RFID read error","Try again.");
 			}
 			else {
+				display("Checking", "Database...");
 				ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 
 				if (strchr(JMN_resp,'T') != NULL) {

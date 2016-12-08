@@ -173,7 +173,7 @@ void SigningIn(char *resp)
     display("Welcome", name);
     free(name);
     digitalWrite(greenLED, HIGH);
-    delay(2000);
+    delay(1000);
     display("Waiting for", "RFID..");
     digitalWrite(greenLED, LOW);
     // digitalWrite(relayPin, HIGH);
