@@ -45,7 +45,7 @@ void init_GPIO()
 
 void activate_LCD()
 {
-    delay(10000); // Needed to wait for login to finish with /dev/ttyAMA0
+    delay(50); // Needed to wait for login to finish with /dev/ttyAMA0
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
 

@@ -103,6 +103,7 @@ int main(int argc, char *argv[])
 				display("RFID read error","Try again.");
 			}
 			else {
+				display("Checking", "Database...");
 				ReqJMN(JMN_resp, RFID_UID, "3", "SignIn", stid);
 				// ReqJMN(JMN_resp, RFID_UID, "1", "begin", stid);
 				if (strchr(JMN_resp,'T') != NULL) {

@@ -113,18 +113,34 @@ tag_stat find_tag(uint16_t * card_type) {
 
 tag_stat select_tag_sn(uint8_t * sn, uint8_t * len){
 
-	if (PcdAnticoll(PICC_ANTICOLL1,buff)!=TAG_OK) {return TAG_ERR;}
-	if (PcdSelect(PICC_ANTICOLL1,buff)!=TAG_OK) {return TAG_ERR;}
+	if (PcdAnticoll(PICC_ANTICOLL1,buff)!=TAG_OK) {
+		printf("Tag error at PcdAnticoll(PICC_ANTICOLL1,buff).\n");
+		return TAG_ERR;
+	}
+	if (PcdSelect(PICC_ANTICOLL1,buff)!=TAG_OK) {
+		printf("Tag error at PcdSelect(PICC_ANTICOLL1,buff).\n");
+		return TAG_ERR;
+	}
 	if (buff[0]==0x88) {
 		memcpy(sn,&buff[1],3);
 		if (PcdAnticoll(PICC_ANTICOLL2,buff)!=TAG_OK) {
-			return TAG_ERR;}
-		if (PcdSelect(PICC_ANTICOLL2,buff)!=TAG_OK) {return TAG_ERR;}
+			printf("Tag error at PcdAnticoll(PICC_ANTICOLL2,buff).\n");
+			return TAG_ERR;
+		}
+		if (PcdSelect(PICC_ANTICOLL2,buff)!=TAG_OK) {
+			printf("Tag error at PcdSelect(PICC_ANTICOLL2,buff).\n");
+			return TAG_ERR;
+		}
 		if (buff[0]==0x88) {
 			memcpy(sn+3,&buff[1],3);
 			if (PcdAnticoll(PICC_ANTICOLL3,buff)!=TAG_OK) {
-				return TAG_ERR;}
-			if (PcdSelect(PICC_ANTICOLL3,buff)!=TAG_OK) {return TAG_ERR;}
+				printf("Tag error at PcdAnticoll(PICC_ANTICOLL3,buff).\n");
+				return TAG_ERR;
+			}
+			if (PcdSelect(PICC_ANTICOLL3,buff)!=TAG_OK) {
+				printf("Tag error at PcdSelect(PICC_ANTICOLL3,buff).\n");
+				return TAG_ERR;
+			}
 			memcpy(sn+6,buff,4);
 			*len=10;
 		}else{
