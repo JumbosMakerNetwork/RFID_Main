@@ -56,14 +56,14 @@ char PcdAnticoll(uint8_t cascade, uint8_t *pSnr)
 			collbits=ReadRawRC(CollReg)&0x1f;
 			if (collbits==0) collbits=32;
 			i=(collbits-1)/8 +1;
-//			printf ("--- %02x %02x %02x %02x %d\n",ucComMF522Buf[0],ucComMF522Buf[1],ucComMF522Buf[2],ucComMF522Buf[3],unLen);
+			printf ("--- %02x %02x %02x %02x %d\n",ucComMF522Buf[0],ucComMF522Buf[1],ucComMF522Buf[2],ucComMF522Buf[3],unLen);
 			ucComMF522Buf[i-1]|=(1<<((collbits-1)%8));
 			ucComMF522Buf[5]=ucComMF522Buf[3];
 			ucComMF522Buf[4]=ucComMF522Buf[2];
 			ucComMF522Buf[3]=ucComMF522Buf[1];
 			ucComMF522Buf[2]=ucComMF522Buf[0];
 			WriteRawRC(BitFramingReg,(collbits % 8));
-//			printf (" %d %d %02x %d\n",collbits,i,ucComMF522Buf[i+1],collbits % 8);
+			printf (" %d %d %02x %d\n",collbits,i,ucComMF522Buf[i+1],collbits % 8);
 		}
 	} while (((--pass)>0)&&(status==TAG_COLLISION));
 
