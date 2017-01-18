@@ -59,16 +59,6 @@ void activate_LCD()
     delay(250);
     serialFlush(LCD);
     delay(250);
-    serialClose(LCD);
-    delay(250)
-    
-    if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
-        fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
-        return;
-    }
-    delay(250);
-    serialFlush(LCD);
-    delay(250);
 
     digitalWrite(LCD_3v3, LOW);
     delay(50);
@@ -86,12 +76,7 @@ void activate_LCD()
     write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
-    delay(500);
-    // Perform a hard clear
-    // display("                ","                ");
-    display("Welcome,", "Terminal ready.");
     delay(1000);
-    display("Waiting for", "RFID...");
 }
 
 void displayIP(char input[])
@@ -130,8 +115,13 @@ void displayIP(char input[])
     delay(1000);
     display(line1, line2);
     delay(3000);
-    // display("Waiting for", "RFID...Test");
-    // delay(3000);
+    display("Welcome", "RFID...Test");
+    delay(1000);
+    // Clears screen of any junk
+    char clearcmd[2] = { 254, 1 };
+    write(LCD, clearcmd, 2);
+    delay(1000);
+
 }
 
 int readHelp(int initHelpState)
@@ -259,12 +249,7 @@ void sendHelp()
 }
 
 void display(char *line1, char *line2)
-{
-    // // Clears screen of any junk
-    // delay(50);
-    // char clearcmd[2] = { 254, 1 };
-    // write(LCD, clearcmd, 2);
-    
+{    
     char line1cmd[2] = { 254, 128 };
     char line2cmd[2] = { 254, 192 };
 

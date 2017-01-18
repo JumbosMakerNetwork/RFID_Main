@@ -21,6 +21,7 @@ uint8_t buff[MAXRLEN];
 
 void init_RFID()
 {
+	printf("Initializing RFID.\n");
 	uint8_t gpio=255;
 	uint32_t spi_speed=10000000L;
 	if (HW_init(spi_speed,gpio)) fprintf(stderr, "HW init failure\n"); // Если не удалось инициализировать RC522 выходим.
