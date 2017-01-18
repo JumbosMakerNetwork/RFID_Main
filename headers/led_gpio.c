@@ -251,15 +251,16 @@ void display(char *line1, char *line2)
     // char clearcmd[2] = { 254, 1 };
     // write(LCD, clearcmd, 2);
     
-    delay(100);
     char line1cmd[2] = { 254, 128 };
     char line2cmd[2] = { 254, 192 };
 
     center(LCD_buff1, line1);
     center(LCD_buff2, line2);
 
+    delay(100);
     write(LCD, line1cmd, 2);
     serialPuts(LCD, LCD_buff1);
+    delay(100);
     write(LCD, line2cmd, 2);
     serialPuts(LCD, LCD_buff2);
 }
