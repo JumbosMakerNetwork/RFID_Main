@@ -243,10 +243,10 @@ void sendHelp()
 
 void display(char *line1, char *line2)
 {
-    // Clears screen of any junk
-    delay(50);
-    char clearcmd[2] = { 254, 1 };
-    write(LCD, clearcmd, 2);
+    // // Clears screen of any junk
+    // delay(50);
+    // char clearcmd[2] = { 254, 1 };
+    // write(LCD, clearcmd, 2);
     
     char line1cmd[2] = { 254, 128 };
     char line2cmd[2] = { 254, 192 };
