@@ -91,10 +91,10 @@ void activate_LCD()
     delay(50);
     char resetcmd[2] = {0x12, 1};
     write(LCD, resetcmd, 1);
+    
     delay(50);
-
-	// char clearcmd[2] = { 254, 1 };
- //    write(LCD, clearcmd, 2);
+	char clearcmd[2] = { 254, 1 };
+    write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
 
