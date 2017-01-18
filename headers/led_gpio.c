@@ -58,16 +58,6 @@ void activate_LCD()
         return;
     }
 
-    // // This is a hodge podge solution to a weird buffer issue we've been having. 
-    // delay(50);
-    // close(LCD);
-
-    // delay(50);
-    // if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
-    //     fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
-    //     return;
-    // }
-
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
 
@@ -82,7 +72,7 @@ void activate_LCD()
     write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
-
+    delay(1000);
     display("Welcome,", "Terminal ready.");
     delay(1000);
     display("Waiting for", "RFID...");
@@ -253,16 +243,21 @@ void sendHelp()
 
 void display(char *line1, char *line2)
 {
-        char line1cmd[2] = { 254, 128 };
-        char line2cmd[2] = { 254, 192 };
+    // Clears screen of any junk
+    delay(50);
+    char clearcmd[2] = { 254, 1 };
+    write(LCD, clearcmd, 2);
+    
+    char line1cmd[2] = { 254, 128 };
+    char line2cmd[2] = { 254, 192 };
 
-        center(LCD_buff1, line1);
-        center(LCD_buff2, line2);
+    center(LCD_buff1, line1);
+    center(LCD_buff2, line2);
 
-        write(LCD, line1cmd, 2);
-        serialPuts(LCD, LCD_buff1);
-        write(LCD, line2cmd, 2);
-        serialPuts(LCD, LCD_buff2);
+    write(LCD, line1cmd, 2);
+    serialPuts(LCD, LCD_buff1);
+    write(LCD, line2cmd, 2);
+    serialPuts(LCD, LCD_buff2);
 }
 
 void getName(char *name_buff, char *response)
