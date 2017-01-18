@@ -60,7 +60,7 @@ void activate_LCD()
 
     // Sends a reset to 9600 command to LCD (Just in case)
     delay(50);
-    char resetcmd[2] = {18, 1};
+    char resetcmd[2] = { 0x0F, 1};
     write(LCD, resetcmd, 1);
 
     // // Sets cursor to

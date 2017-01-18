@@ -1,12 +1,14 @@
 #!/bin/sh
 # hostname -I | sudo /home/dolanwill/rfid/rfid -IP &
 
-while ! ping -c 1 -W 1 130.64.17.0; do
+while ! ping -c 1 130.64.17.0; do
     echo "Waiting for connection to network - network interface might be down..."
     sleep 2
 done
 
-sleep 120
+# if [ $( ifconfig -s | grep eth0 ) ]; then echo "eth0 is up!"
+
+sleep 60
 SID=$1
 # MacAdd=$(cat /sys/class/net/wlan0/address)
 IPAdd=$(hostname -I)
