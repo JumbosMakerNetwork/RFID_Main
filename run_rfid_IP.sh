@@ -12,7 +12,7 @@ done
 
 sleep 60
 
-# gpio mode 15 ALT0; gpio mode 16 ALT0
+gpio mode 15 ALT0; gpio mode 16 ALT0
 
 SID=$1
 IPAdd=$(hostname -I)
