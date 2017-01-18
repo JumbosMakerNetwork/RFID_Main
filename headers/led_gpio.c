@@ -59,6 +59,16 @@ void activate_LCD()
     delay(250);
     serialFlush(LCD);
     delay(250);
+    serialClose(LCD);
+    delay(250)
+    
+    if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
+        fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
+        return;
+    }
+    delay(250);
+    serialFlush(LCD);
+    delay(250);
 
     digitalWrite(LCD_3v3, LOW);
     delay(50);
