@@ -72,7 +72,7 @@ void activate_LCD()
     write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
-    delay(1000);
+    delay(500);
     // Perform a hard clear
     display("                ","                ");
     display("Welcome,", "Terminal ready.");
