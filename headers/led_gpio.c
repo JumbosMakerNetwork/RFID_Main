@@ -67,7 +67,7 @@ void activate_LCD()
     write(LCD, resetcmd, 1);
  
     // Clears screen of any junk
-    delay(50);
+    delay(500);
 	char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
 
