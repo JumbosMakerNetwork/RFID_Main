@@ -46,7 +46,7 @@ void init_GPIO()
 void activate_LCD()
 {
     // Needed to wait for login to finish with /dev/ttyAMA0
-    digitalWrite(LCD_3v3, LOW);
+    // digitalWrite(LCD_3v3, LOW);
     delay(50); 
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
@@ -72,14 +72,9 @@ void activate_LCD()
     digitalWrite(LCD_3v3, HIGH); 
 
     // Sends a reset to 9600 command to LCD (Just in case)
-    delay(50);
-    char resetcmd[2] = { 0x0F, 1};
-    write(LCD, resetcmd, 1);
-
-    // // Sets cursor to
-    // delay(25);
-    // char pos0[2] = { 254, 128 };
-    // write(LCD, pos0, 2);
+    // delay(50);
+    // char resetcmd[2] = { 0x0F, 1};
+    // write(LCD, resetcmd, 1);
  
     // Clears screen of any junk
     delay(50);
