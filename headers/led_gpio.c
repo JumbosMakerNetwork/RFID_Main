@@ -46,7 +46,8 @@ void init_GPIO()
 void activate_LCD()
 {
     // Needed to wait for login to finish with /dev/ttyAMA0
-    // digitalWrite(LCD_3v3, LOW);
+    digitalWrite(LCD_3v3, LOW);
+
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
 
@@ -57,6 +58,8 @@ void activate_LCD()
     }
     delay(1000);
 
+    digitalWrite(LCD_3v3, LOW);
+    delay(50);
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
 
