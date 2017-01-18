@@ -50,12 +50,12 @@ void activate_LCD()
 
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
-
     printf("Opening connection to LCD.\n");
     if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
-        fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
+        fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno));
         return;
     }
+
     delay(250);
     serialFlush(LCD);
     delay(250);
