@@ -47,17 +47,15 @@ void activate_LCD()
 {
     // Needed to wait for login to finish with /dev/ttyAMA0
     // digitalWrite(LCD_3v3, LOW);
-    delay(50); 
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
 
     printf("Opening connection to LCD.\n");
-    delay(50);
     if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
-    delay(500);
+    delay(1000);
 
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
@@ -117,8 +115,8 @@ void displayIP(char input[])
     delay(1000);
     display(line1, line2);
     delay(3000);
-    display("Waiting for", "RFID...Test");
-    delay(3000);
+    // display("Waiting for", "RFID...Test");
+    // delay(3000);
 }
 
 int readHelp(int initHelpState)
