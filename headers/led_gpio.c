@@ -73,6 +73,8 @@ void activate_LCD()
 
     printf("LCD activated.\n");
     delay(1000);
+    // Perform a hard clear
+    display("                ","                ");
     display("Welcome,", "Terminal ready.");
     delay(1000);
     display("Waiting for", "RFID...");
