@@ -115,7 +115,7 @@ void displayIP(char input[])
     delay(1000);
     display(line1, line2);
     delay(3000);
-    display("Welcome", "RFID...Test");
+    display("Welcome", "and enjoy");
     delay(1000);
     // Clears screen of any junk
     char clearcmd[2] = { 254, 1 };
