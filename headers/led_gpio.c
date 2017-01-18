@@ -1,6 +1,6 @@
 /*
  * HW_GPIO.c
- *	
+ *  
  *  by Will Dolan, June 2016
  */
 
@@ -17,7 +17,7 @@
 #include "led_gpio.h"
 
 #define greenLED 29
-#define redLED	  28
+#define redLED    28
 #define relayPin 27
 #define LCD_3v3  1
 #define HELP_BUTTON 24
@@ -31,8 +31,8 @@ char *LCD_buff2;
 void init_GPIO()
 {
     wiringPiSetup();
-	pinMode(greenLED, OUTPUT);     
-	pinMode(redLED, OUTPUT);    
+    pinMode(greenLED, OUTPUT);     
+    pinMode(redLED, OUTPUT);    
     pinMode(relayPin, OUTPUT); 
     pinMode(HELP_BUTTON, INPUT);
     pinMode(LCD_3v3, OUTPUT);
@@ -46,7 +46,7 @@ void init_GPIO()
 void activate_LCD()
 {
     // Needed to wait for login to finish with /dev/ttyAMA0
-    digitalWrite(LCD_3v3, LOW);
+    // digitalWrite(LCD_3v3, LOW);
 
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
@@ -56,12 +56,12 @@ void activate_LCD()
         return;
     }
 
-    delay(250);
-    serialFlush(LCD);
-    delay(250);
+    // delay(250);
+    // serialFlush(LCD);
+    // delay(250);
 
-    digitalWrite(LCD_3v3, LOW);
-    delay(50);
+    // digitalWrite(LCD_3v3, LOW);
+    // delay(50);
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
 
@@ -72,7 +72,7 @@ void activate_LCD()
  
     // Clears screen of any junk
     delay(500);
-	char clearcmd[2] = { 254, 1 };
+    char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
@@ -121,7 +121,6 @@ void displayIP(char input[])
     char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
     delay(1000);
-
 }
 
 int readHelp(int initHelpState)
