@@ -12,7 +12,7 @@ done
 
 sleep 60
 
-gpio mode 15 ALT0; gpio mode 16 ALT0
+# gpio mode 15 ALT0; gpio mode 16 ALT0
 
 SID=$1
 IPAdd=$(hostname -I)
@@ -26,4 +26,4 @@ else
 	sudo /home/rfid/TSync/rfid -STID $SID -IP $IPAdd &
 fi
 
-dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
+# dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait
