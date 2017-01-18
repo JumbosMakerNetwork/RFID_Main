@@ -89,8 +89,13 @@ void activate_LCD()
     digitalWrite(LCD_3v3, HIGH); 
 
     delay(50);
-	char clearcmd[2] = { 254, 1 };
-    write(LCD, clearcmd, 2);
+    char resetcmd[2] = {0x12, 1};
+    write(LCD, resetcmd, 1);
+    delay(50);
+
+	// char clearcmd[2] = { 254, 1 };
+ //    write(LCD, clearcmd, 2);
+
     printf("LCD activated.\n");
 
     display("Welcome,", "Terminal ready.");
