@@ -57,7 +57,7 @@ void activate_LCD()
     }
 
     // This is a hodge podge solution to a weird buffer issue we've been having. 
-    delay(50)
+    delay(50);
     close(LCD);
 
     delay(50);
