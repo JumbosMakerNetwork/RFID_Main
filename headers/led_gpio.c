@@ -72,9 +72,9 @@ void activate_LCD()
     digitalWrite(LCD_3v3, HIGH); 
 
     // Sends a reset to 9600 command to LCD (Just in case)
-    // delay(50);
-    // char resetcmd[2] = { 0x0F, 1};
-    // write(LCD, resetcmd, 1);
+    delay(50);
+    char resetcmd[2] = { 0x0F, 1};
+    write(LCD, resetcmd, 1);
  
     // Clears screen of any junk
     delay(50);
