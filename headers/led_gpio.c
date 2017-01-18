@@ -72,7 +72,7 @@ void activate_LCD()
     write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
-    delay(1000);
+    delay(250);
     // Perform a hard clear
     display("                ","                ");
     display("Welcome,", "Terminal ready.");
@@ -251,6 +251,7 @@ void display(char *line1, char *line2)
     // char clearcmd[2] = { 254, 1 };
     // write(LCD, clearcmd, 2);
     
+    delay(50);
     char line1cmd[2] = { 254, 128 };
     char line2cmd[2] = { 254, 192 };
 
