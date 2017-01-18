@@ -91,12 +91,12 @@ void activate_LCD()
 
     // Sends a reset to 9600 command to LCD (Just in case)
     delay(50);
-    char resetcmd[1] = {0x12};
+    char resetcmd[2] = {18, 1};
     write(LCD, resetcmd, 1);
 
     // Clears screen of any junk
     delay(50);
-	char clearcmd[2] = { 0xFE, 0x01 };
+	char clearcmd[2] = { 254, 1 };
     write(LCD, clearcmd, 2);
 
     printf("LCD activated.\n");
