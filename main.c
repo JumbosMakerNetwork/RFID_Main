@@ -62,14 +62,6 @@ int main(int argc, char *argv[])
 				delay(1500);
 			}
 
-			// else if(strcmp(argv[i], "-IP") == 0) {
-			// 	i++;
-			// 	printf("\narg%d= ", i);
-			// 	printf("%s", argv[i]);
-			// 	strcpy(MacAdd, argv[i]);
-			// 	printf("\nSuccessfully assigned Mac Address %s", MacAdd);
-			// }
-
 			else if(strcmp(argv[i], "-IP") == 0) {
 				i++;
 				// Check if there is an IP attached

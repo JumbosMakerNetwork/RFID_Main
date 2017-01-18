@@ -55,37 +55,6 @@ void activate_LCD()
         return;
     }
 
-    // char buff[32];
-    // int n = read(LCD, buff, sizeof(buff));
-    // while (n > 0) {
-    //     delay(25);
-    //     n = read(LCD, buff, sizeof(buff));
-    //     printf("Waiting for quiet /dev/ttyAMA0 ... ");
-    // }
-
-    // bool AMA0_Feed = true;
-    // char buff[32];
-    // time_t t_last;
-    // time_t t_now;
-    // double timeout = 1;
-
-    // while (AMA0_Feed) {
-    //     t_last = time(NULL);
-    //     try{
-    //         int n = read(LCD, buff, sizeof(buff));
-    //         printf("Waiting for quiet /dev/ttyAMA0 ... ");
-    //         AMA0_Feed = true;
-    //     }
-    //     catch (Exception ex){
-    //         t_now = time(NULL);
-    //         if (difftime(t_now, t_last) > timeout) {
-    //             printf("/dev/ttyAMA0 quiet ... ");
-    //             AMA0_Feed = false;
-    //             throw;
-    //         }
-    //     }
-    // }
-
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
 
@@ -94,6 +63,11 @@ void activate_LCD()
     char resetcmd[2] = {18, 1};
     write(LCD, resetcmd, 1);
 
+    // // Sets cursor to
+    // delay(25);
+    // char pos0[2] = { 254, 128 };
+    // write(LCD, pos0, 2);
+ 
     // Clears screen of any junk
     delay(50);
 	char clearcmd[2] = { 254, 1 };

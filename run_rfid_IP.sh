@@ -6,7 +6,7 @@ while ! ping -c 1 -W 1 130.64.17.0; do
     sleep 2
 done
 
-sleep 30
+sleep 120
 SID=$1
 # MacAdd=$(cat /sys/class/net/wlan0/address)
 IPAdd=$(hostname -I)
