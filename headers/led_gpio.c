@@ -57,6 +57,7 @@ void activate_LCD()
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
+    delay(500);
 
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
