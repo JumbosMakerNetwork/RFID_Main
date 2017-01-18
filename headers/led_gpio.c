@@ -56,7 +56,9 @@ void activate_LCD()
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
-    delay(1000);
+    delay(250);
+    serialFlush(LCD);
+    delay(250);
 
     digitalWrite(LCD_3v3, LOW);
     delay(50);
