@@ -114,7 +114,8 @@ void displayIP(char input[])
     delay(1000);
     display(line1, line2);
     delay(3000);
-    display("Waiting for", "RFID...");
+    display("Waiting for", "RFID...Test");
+    delay(3000);
 }
 
 int readHelp(int initHelpState)
