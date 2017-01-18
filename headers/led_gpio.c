@@ -46,25 +46,27 @@ void init_GPIO()
 void activate_LCD()
 {
     // Needed to wait for login to finish with /dev/ttyAMA0
+    digitalWrite(LCD_3v3, LOW);
     delay(50); 
     LCD_buff1 = (char *)calloc(16, 1);
     LCD_buff2 = (char *)calloc(16, 1);
 
+    printf("Opening connection to LCD.\n");
     delay(50);
     if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
         fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
         return;
     }
 
-    // This is a hodge podge solution to a weird buffer issue we've been having. 
-    delay(50);
-    close(LCD);
+    // // This is a hodge podge solution to a weird buffer issue we've been having. 
+    // delay(50);
+    // close(LCD);
 
-    delay(50);
-    if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
-        fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
-        return;
-    }
+    // delay(50);
+    // if ((LCD = serialOpen ("/dev/ttyAMA0", 9600)) < 0) {
+    //     fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
+    //     return;
+    // }
 
     // Turns on power to LCD
     digitalWrite(LCD_3v3, HIGH); 
