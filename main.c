@@ -24,8 +24,7 @@ void readIP();
 
 char RFID_UID[10];
 char stid[10];
-char IP[64];
-char MacAdd[64];
+char IP[64];	// char MacAdd[64];
 
 /* Main :
  *      First, initialize RFID and GPIO components

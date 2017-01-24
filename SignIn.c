@@ -33,6 +33,7 @@ char IP[64];
  *      send a //request to JMN DB w/ RFID, then take appropriate action
  *      based on response. Look for help/photo button depress throughout loop.
 */
+
 int main(int argc, char *argv[])
 {
 	printf("\nStarting the SignIn application\n");
@@ -46,6 +47,8 @@ int main(int argc, char *argv[])
 	// Collect the command line arguments to assign SID and Display current IP address
 	int i=0;
 	if (argc > 1) {
+	    display("Configuring", "Terminal");
+	    delay(1000);
 		printf("\ncmdline args count=%d", argc);
 		for (i=1; i< argc; i++) {
 			printf("\narg%d= ", i);
@@ -59,6 +62,7 @@ int main(int argc, char *argv[])
 				display("SignIn Stn:",stid);
 				delay(1500);
 			}
+			
 			else if(strcmp(argv[i], "-IP") == 0) {
 				i++;
 				// Check if there is an IP attached
