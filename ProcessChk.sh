@@ -23,6 +23,7 @@ eval $cmd
 
 
 # if ping -c 1 130.64.17.0 >> /dev/null 2>&1; then
+# if ping -c 1 130.64.91.17 >> /dev/null 2>&1; then
 #     echo "online"
 # else
 #     echo "offline"

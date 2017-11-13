@@ -30,7 +30,8 @@ void takePicture(char *time_file, char *rfid)
 	*/
 	strcpy(command, "curl -F docfile=@/home/media/");
 	strncat(command, time_file, 24);
-	strcat(command, " 130.64.17.0:8000/RFID/5/5/");
+	// strcat(command, " 130.64.17.0:8000/RFID/5/5/");
+	strcat(command, " 130.64.91.17:8000/RFID/5/5/");
 	strcat(command, rfid);
 	strcat(command, "/");
 	strncat(command, time_file, 24);

@@ -7,7 +7,8 @@
 
 const char *SSID      = "Tufts_Wireless";
 const char *PSK       = ""; 
-const char *DBIP      = "130.64.17.0";
+// const char *DBIP      = "130.64.17.0";
+const char *DBIP      = "130.64.91.17";
 const char *LOCALIP   = "";
 char *http_data;
 

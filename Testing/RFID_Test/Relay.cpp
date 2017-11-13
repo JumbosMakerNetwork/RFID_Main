@@ -18,7 +18,8 @@ using namespace std;
 
 const char *SSID      = "tuftswireless";
 const char *PSK       = ""; 
-const char *DBIP      = "130.64.17.0";
+// const char *DBIP      = "130.64.17.0";
+const char *DBIP      = "130.64.91.17";
 const int STID        = 5;             // Station ID number (soldering)
 
 ///////////////// Hardware assignments //////////////////////

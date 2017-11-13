@@ -3,7 +3,8 @@
 # sudo sh /home/rfid/TSync/run_rfid_IP.sh 23
 
 # Wair until connected to the database server
-while ! ping -c 1 130.64.17.0 | grep rtt; do
+# while ! ping -c 1 130.64.17.0 | grep rtt; do
+while ! ping -c 1 130.64.91.17 | grep rtt; do
     echo "Waiting for connection to network - network interface might be down..."
     sleep 2
 done
